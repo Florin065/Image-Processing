@@ -1,4 +1,6 @@
 import util.Pixel
+import util.Util
+import util.Util.{GrayscaleImage, getNeighbors, toGrayScale}
 
 // Online viewer: https://0xc0de.fr/webppm/
 object Solution {
@@ -13,9 +15,15 @@ object Solution {
       _.trim.split("\\s+").map(_.toInt)
     )
 
-    val dimensions = header(1).split(' ').map(_.toInt) // width and height
+    val dimensions = header(1)
+      .split(' ')
+      .map(_.toInt) // width and height
 
-    (pixels grouped 3).toList.map(chunk => Pixel(chunk.head, chunk(1), chunk(2))).grouped(dimensions.head).toList
+    (pixels grouped 3)
+      .toList
+      .map(chunk => Pixel(chunk.head, chunk(1), chunk(2)))
+      .grouped(dimensions.head)
+      .toList
   }
 
   def toStringPPM(image: Image): List[Char] = {
@@ -72,12 +80,45 @@ object Solution {
   )
 
   def edgeDetection(image: Image, threshold : Double): Image = {
+    val grayScaleImage = image.map(_.map(toGrayScale))
+    val blur = applyConvolution(grayScaleImage, gaussianBlurKernel)
+    val Mx = applyConvolution(blur, Gx)
+    val My = applyConvolution(blur, Gy)
 
+    val result = Mx zip My map { case (rowX, rowY) =>
+      rowX zip rowY map { case (x, y) =>
+        val magnitude = Math.sqrt(x * x + y * y)
+        if (magnitude < threshold) Pixel(0, 0, 0)
+        else Pixel(255, 255, 255)
+      }
+    }
+
+    result
   }
 
   def applyConvolution(image: GrayscaleImage, kernel: GrayscaleImage) : GrayscaleImage = {
+    val radius          = kernel.length / 2
+    val neighbors       = getNeighbors(image, radius)
+    val kernelSum       = kernel.flatten.sum
+    val kernelCenter    = kernel(radius)(radius)
+    val kernelCenterSum = kernelSum - kernelCenter
+
+    neighbors.map { _.map { pixel =>
+        val sum    = (pixel.flatten zip kernel.flatten)
+                     .map { case (pixel, kernel) => pixel * kernel }
+                     .sum
+        val result =
+                  (sum - kernelCenter * pixel(radius)(radius)) / kernelCenterSum
+
+        result
+      }
+    }
   }
 
+
   // ex 5
-  def moduloPascal(m: Integer, funct: Integer => Pixel, size: Integer): Image = ???
+  def moduloPascal(m: Integer, funct: Integer => Pixel, size: Integer): Image = { ???
+
+  }
+
 }
