@@ -117,7 +117,7 @@ object Solution {
   // ex 5
   def moduloPascal(m: Integer, funct: Integer => Pixel, size: Integer): Image = {
     def gen(prev: List[Int]): List[List[Int]] = {
-      if (prev.length > size) Nil               // stop condition
+      if (prev.length > size) Nil                // stop condition
       else prev :: gen((0 :: prev)              // prepend 0
         zip prev.appended(0)                    // append 0
         map (pair => (pair._1 + pair._2) % m))  // sum the elements and apply modulo
