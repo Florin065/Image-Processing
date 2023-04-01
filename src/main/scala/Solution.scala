@@ -3,6 +3,7 @@ import util.Util
 import util.Util.{GrayscaleImage, getNeighbors, toGrayScale}
 
 import scala.annotation.tailrec
+import scala.collection.mutable.ListBuffer
 
 // Online viewer: https://0xc0de.fr/webppm/
 object Solution {
@@ -44,21 +45,20 @@ object Solution {
 
   // ex 1
   def verticalConcat(image1: Image, image2: Image): Image =
-    image1 ++ image2  // concatenate the rows
+    image1 ++ image2 // concatenate the rows
 
   // ex 2
   def horizontalConcat(image1: Image, image2: Image): Image =
     for (tuple <- image1 zip image2) yield tuple._1 ++ tuple._2 // zip the rows
 
-
   // ex 3
   def rotate(image: Image, degrees: Integer): Image =
-    val norm = (degrees % 360) / 90          // normalize the degrees
+    val norm = (degrees % 360) / 90           // normalize the degrees
     norm match {
-      case 1 => image.transpose.reverse      //  90 degrees
-      case 2 => image.reverse.map(_.reverse) // 180 degrees
-      case 3 => image.reverse.transpose      // 270 degrees
-      case 0 => image                        // 360 degrees
+      case 1 => image.transpose.reverse       //  90 degrees
+      case 2 => image.reverse.map(_.reverse)  // 180 degrees
+      case 3 => image.reverse.transpose       // 270 degrees
+      case 0 => image                         // 360 degrees
     }
 
   // ex 4
@@ -84,7 +84,7 @@ object Solution {
 
   def edgeDetection(image: Image, threshold: Double): Image = {
     // convert to grayscale
-    val grayScaleImage = image.map(_.map(toGrayScale))
+    val grayScaleImage = image map (_.map(toGrayScale))
 
     // apply convolution to the grayscale image
     val blur = applyConvolution(grayScaleImage, gaussianBlurKernel)
@@ -93,29 +93,40 @@ object Solution {
     val Mx = applyConvolution(blur, Gx)
     val My = applyConvolution(blur, Gy)
 
-    Mx zip My map { case (rowX, rowY) =>           // for each row
-      rowX zip rowY map { case (x, y) =>           // for each pixel
-        val magnitude = x.abs + y.abs              // magnitude of the gradient
-        if (magnitude < threshold) Pixel(0, 0, 0)  // black
-        else Pixel(255, 255, 255)                  // white
+    Mx zip My map { (rowX, rowY) =>                 // for each row
+      rowX zip rowY map { (x, y) =>                 // for each pixel
+        val magnitude = x.abs + y.abs               // magnitude of the gradient
+        if (magnitude < threshold) Pixel(0, 0, 0)   // black
+        else Pixel(255, 255, 255)                   // white
       }
     }
   }
 
   def applyConvolution(image: GrayscaleImage, kernel: GrayscaleImage): GrayscaleImage = {
-    val neighbors = getNeighbors(image, kernel.length / 2)  // get the neighbors of each pixel
+    val neighbors = getNeighbors(image, kernel.length / 2) // get the neighbors of each pixel
 
-    for (neighbor <- neighbors) yield {                     // for each neighbor
-      for (pixel <- neighbor) yield {                       // for each pixel
-        (pixel.flatten zip kernel.flatten)                  // zip the pixels and the weights
-          .map { case (pixel, weight) => pixel * weight }   // multiply the pixels and the weights
-          .sum                                              // sum the result
+    for (neighbor <- neighbors) yield {                    // for each neighbor
+      for (pixel <- neighbor) yield {                      // for each pixel
+        (pixel.flatten zip kernel.flatten)                 // zip the pixels and the weights
+          .map { (pixel, weight) => pixel * weight }       // multiply the pixels and the weights
+          .sum                                             // sum the result
       }
     }
   }
 
-    // ex 5
+  // ex 5
   def moduloPascal(m: Integer, funct: Integer => Pixel, size: Integer): Image = {
-    ???
+    def gen(prev: List[Int]): List[List[Int]] = {
+      if (prev.length > size) Nil               // stop condition
+      else prev :: gen((0 :: prev)              // prepend 0
+        zip prev.appended(0)                    // append 0
+        map (pair => (pair._1 + pair._2) % m))  // sum the elements and apply modulo
+    }
+
+    gen(List(1))                                // generate the pascal triangle
+      .map(                                     // for each row
+        _.map(funct(_))                         // apply the function
+          .padTo(size, Pixel(0, 0, 0))          // pad the row with black pixels
+      )
   }
 }
