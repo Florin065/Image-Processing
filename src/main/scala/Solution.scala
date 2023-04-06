@@ -12,35 +12,35 @@ object Solution {
 
   // prerequisites
   def fromStringPPM(image: List[Char]): Image = {
-    val lines = (image.mkString split '\n').toList
-    val header = lines take 3
-    val pixels = lines drop 3 flatMap (
-      _.trim.split("\\s+").map(_.toInt)
+    val lines = (image.mkString split '\n').toList          // split the image into lines
+    val header = lines take 3                               // get the header
+    val pixels = lines drop 3 flatMap (                     // get the pixels
+      _.trim.split("\\s+").map(_.toInt)              // split the line into pixels
       )
 
-    val dimensions = header(1)
-      .split(' ')
-      .map(_.toInt) // width and height
+    val dimensions = header(1)                              // get the dimensions
+      .split(' ')                                           // split the line into width and height
+      .map(_.toInt)                                         // width and height as integers
 
-    (pixels grouped 3)
-      .toList
-      .map(chunk => Pixel(chunk.head, chunk(1), chunk(2)))
-      .grouped(dimensions.head)
-      .toList
+    (pixels grouped 3)                                      // group the pixels into chunks of 3
+      .toList                                               // convert to list
+      .map(chunk => Pixel(chunk.head, chunk(1), chunk(2)))  // convert to pixels
+      .grouped(dimensions.head)                             // group the pixels into rows
+      .toList                                               // convert to list
   }
 
   def toStringPPM(image: Image): List[Char] = {
-    ("P3\n" // PPM format
-      + s"${image.head.length}" // width
-      + " "
-      + s"${image.length}\n" // height
-      + "255\n"
-      :: image
-      .flatten
-      .map(
-        p => s"${p.red} ${p.green} ${p.blue}\n"
+    ("P3\n"                                                 // PPM format
+      + s"${image.head.length}"                             // width
+      + " "                                                 // space
+      + s"${image.length}\n"                                // height
+      + "255\n"                                             // max value
+      :: image                                              // append the image
+      .flatten                                              // flatten the image
+      .map(                                                 // for each pixel
+        p => s"${p.red} ${p.green} ${p.blue}\n"             // convert to string
       )
-      ).mkString.toList
+      ).mkString.toList                                     // join the lines and convert to list
   }
 
   // ex 1
@@ -117,7 +117,7 @@ object Solution {
   // ex 5
   def moduloPascal(m: Integer, funct: Integer => Pixel, size: Integer): Image = {
     def gen(prev: List[Int]): List[List[Int]] = {
-      if (prev.length > size) Nil                // stop condition
+      if (prev.length > size) Nil               // stop condition
       else prev :: gen((0 :: prev)              // prepend 0
         zip prev.appended(0)                    // append 0
         map (pair => (pair._1 + pair._2) % m))  // sum the elements and apply modulo

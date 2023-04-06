@@ -1,0 +1,124 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.8.2 (Oracle Corporation Java 19.0.2)
+[debug]       Load.loadUnit: plugins took 94.353877ms
+[debug]       Load.loadUnit: defsScala took 0.614685ms
+[debug] [Loading] Scanning directory /home/flx777/.sbt/1.0/plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /home/flx777/.sbt/1.0/plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 23.938067 ms
+[debug]           Load.resolveProject(global-plugins) took 55.517473ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: /home/flx777/.sbt/1.0/plugins, plugins: List(<none>))) took 104.423365ms
+[debug] [Loading] Done in /home/flx777/.sbt/1.0/plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 136.842838ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.468504ms
+[debug]     Load.loadUnit(file:/home/flx777/.sbt/1.0/plugins/, ...) took 245.842222ms
+[debug]   Load.apply: load took 507.284628ms
+[debug]   Load.apply: resolveProjects took 6.765933ms
+[debug]   Load.apply: finalTransforms took 57.632168ms
+[debug]   Load.apply: config.delegates took 7.467642ms
+[debug]   Load.apply: Def.make(settings)... took 357.671278ms
+[debug]   Load.apply: structureIndex took 110.665898ms
+[debug]   Load.apply: mkStreams took 1.407818ms
+[info] loading global plugins from /home/flx777/.sbt/1.0/plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[warn] sbt-1.8.2.jar no longer exists at /home/flx777/.var/app/com.jetbrains.IntelliJ-IDEA-Community/cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/sbt/1.8.2/sbt-1.8.2.jar
+[debug] Load.defaultLoad until apply took 39104.24209ms
+[debug]           Load.loadUnit: plugins took 18.701457ms
+[debug]           Load.loadUnit: defsScala took 0.005378ms
+[debug] [Loading] Scanning directory /home/flx777/Facultate/a2s2/PP/Teme/Tema1/Image-Processing/project
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /home/flx777/Facultate/a2s2/PP/Teme/Tema1/Image-Processing/project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 2.593184 ms
+[debug]               Load.resolveProject(image-processing-build) took 1.522497ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id image-processing-build, base: /home/flx777/Facultate/a2s2/PP/Teme/Tema1/Image-Processing/project, plugins: List(<none>))) took 4.859225ms
+[debug] [Loading] Done in /home/flx777/Facultate/a2s2/PP/Teme/Tema1/Image-Processing/project, returning: (image-processing-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 6.966723ms
+[debug]           Load.loadUnit: cleanEvalClasses took 0.018927ms
+[debug]         Load.loadUnit(file:/home/flx777/Facultate/a2s2/PP/Teme/Tema1/Image-Processing/project/, ...) took 26.328332ms
+[debug]       Load.apply: load took 28.504975ms
+[debug]       Load.apply: resolveProjects took 0.422268ms
+[debug]       Load.apply: finalTransforms took 7.986844ms
+[debug]       Load.apply: config.delegates took 0.263307ms
+[debug]       Load.apply: Def.make(settings)... took 60.907443ms
+[debug]       Load.apply: structureIndex took 23.536028ms
+[debug]       Load.apply: mkStreams took 0.003771ms
+[info] loading project definition from /home/flx777/Facultate/a2s2/PP/Teme/Tema1/Image-Processing/project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 496.480857ms
+[debug]     Load.loadUnit: defsScala took 0.003422ms
+[debug] [Loading] Scanning directory /home/flx777/Facultate/a2s2/PP/Teme/Tema1/Image-Processing
+[debug]       Load.loadUnit: mkEval took 4.664085ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /home/flx777/Facultate/a2s2/PP/Teme/Tema1/Image-Processing, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 0.798161 ms
+[info] loading settings for project image-processing from build.sbt ...
+[debug]         Load.resolveProject(image-processing) took 2.215266ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id image-processing, base: /home/flx777/Facultate/a2s2/PP/Teme/Tema1/Image-Processing, plugins: List(<none>))) took 3.489333ms
+[debug] [Loading] Done in /home/flx777/Facultate/a2s2/PP/Teme/Tema1/Image-Processing, returning: (image-processing)
+[debug]     Load.loadUnit: loadedProjectsRaw took 81.20634ms
+[debug]     Load.loadUnit: cleanEvalClasses took 3.892046ms
+[debug]   Load.loadUnit(file:/home/flx777/Facultate/a2s2/PP/Teme/Tema1/Image-Processing/, ...) took 582.0504ms
+[debug] Load.apply: load took 583.290802ms
+[debug] Load.apply: resolveProjects took 0.085836ms
+[debug] Load.apply: finalTransforms took 6.356649ms
+[debug] Load.apply: config.delegates took 0.242913ms
+[debug] Load.apply: Def.make(settings)... took 70.948984ms
+[debug] Load.apply: structureIndex took 22.447602ms
+[debug] Load.apply: mkStreams took 0.004819ms
+[info] set current project to TemaScala (in build file:/home/flx777/Facultate/a2s2/PP/Teme/Tema1/Image-Processing/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(shell, None, None)
+[info] sbt server started at local:///home/flx777/.sbt/1.0/server/1bcc65c023d2ffa10936/sock
+[debug] Writing bsp connection file
+[info] started sbt server
